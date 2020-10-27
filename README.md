@@ -1,6 +1,5 @@
 s is a project to improve Android knowledge
 
-*******************************Backlog***************************
 Sprint 22/10 a 27/10
 
 [x] Criar projeto no AndroidStudio
