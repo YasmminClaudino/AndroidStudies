@@ -1,13 +1,13 @@
-s is a project to improve Android knowledge
+## Android Studies
+### This is a project to improve Android knowledge
 
-Sprint 22/10 a 27/10
+> Sprint 22/10 to 27/10
 
-[x] Criar projeto no AndroidStudio
-[x] Cria o repo no github, com as tarefas no readme
-[ ] Criar a ListActivity com um RecyclerView, e adicionar alguns itens. A tela deve ser feita com ConstraintLayout e ViewBinding (RecycleView/ConstraintLayout/ViewBinding)
+- [x] Create the project in AndroidStudio;
+- [x] Create github repo with sprint tasks on README.md;
+- [ ] Create ListActivity using RecyclerView, and add some itens to it. The activity layout must be created with ConstraintLayout and ViewBinding (RecycleView/ConstraintLayout/ViewBinding)
 
-Sprint 27/10 a 03/10
+> Sprint 27/10 to 03/10
 
-[ ] Criar um ListPresenter que vai "gerenciar" a Activity. (MVP)
-Todas as ações da activity são repassadas para o presenter, que chama as classes adequadas para resolver essas ações. Por fim chama a propria activity com o resultado
+- [ ] Create a ListPresent to manage the Activity, (MVP). All Activity actions are passed on to the presenter that call the proper classes to resolve each actions and finally calls the Acitvity itself with the results.
 
