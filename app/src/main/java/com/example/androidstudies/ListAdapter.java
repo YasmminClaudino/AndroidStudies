@@ -49,8 +49,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.rir.title.setText(mLista.get(position));
-        holder.rir.description.setText("Lorem Ipsum is simply " +
-                        "dummy text of the printing.");
+        holder.rir.description.setText("Lorem Ipsum is simply dummy text of the printing." +
+        "alohormara testete");
         holder.rir.shareNumber.setText("6");
         holder.rir.starNumber.setText("4");
 
