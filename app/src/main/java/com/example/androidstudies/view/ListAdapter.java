@@ -1,6 +1,6 @@
-package com.example.androidstudies;
+package com.example.androidstudies.view;
 
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,30 +8,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidstudies.R;
 import com.example.androidstudies.databinding.RvItemRepoBinding;
-
-import java.util.List;
+import com.example.androidstudies.presenter.ListPresenter;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
 
-    private final List<String> mLista;
-    private Context mContext;
+    private final ListPresenter mPresenter;
 
-    public  ListAdapter(List<String> lista, Context context) {
-        this.mLista = lista;
-        this.mContext = context;
+    public ListAdapter(ListPresenter presenter) {
+        mPresenter = presenter;
     }
 
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {;
         public RvItemRepoBinding rir;
         public MyViewHolder(View v) {
             super(v);
             rir = RvItemRepoBinding.bind(v);
-
         }
     }
-
 
     @NonNull
     @Override
@@ -40,28 +35,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder>{
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v =  LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_item_repo,
                 parent,false);
-
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.rir.title.setText(mLista.get(position));
-        holder.rir.description.setText("Lorem Ipsum is simply dummy text of the printing." +
-        "alohormara testete");
-        holder.rir.shareNumber.setText("6");
-        holder.rir.starNumber.setText("4");
-
+        Log.d("Yaya", "onBindViewHolder");
+        mPresenter.onBindViewHolderListPresenter(holder, position);
     }
 
     @Override
     public int getItemCount() {
-        if (mLista.size() != 0) {
-            return mLista.size();
-        } else {
-            return 0;
-        }
+        Log.d("Yaya", "List repositories size: " + mPresenter.getListRepositoriesSize());
+       return mPresenter.getListRepositoriesSize();
     }
+
 }
