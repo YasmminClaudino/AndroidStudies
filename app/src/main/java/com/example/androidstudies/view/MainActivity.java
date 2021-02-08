@@ -7,15 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import com.example.androidstudies.databinding.ActivityMainBinding;
-import com.example.androidstudies.model.Repository;
 import com.example.androidstudies.presenter.ListPresenter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements IListRepository.View {
 
-    private final List<Repository> listRepositories = new ArrayList<>();
     private  ListPresenter mPresenter;
     private ListAdapter mAdapter;
 
@@ -33,23 +28,17 @@ public class MainActivity extends AppCompatActivity implements IListRepository.V
         mAdapter = new ListAdapter(mPresenter);
         rc.setAdapter(mAdapter);
 
-        //Enquanto não pegar o repositórios da API usar para criar no presenter
-        mPresenter.createRepository(listRepositories);
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mPresenter.onStart();
-        mPresenter.attachView(this);
-        mPresenter.onLoad(listRepositories);
+        mPresenter.onStart(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         mPresenter.onStop();
-        mPresenter.unattachedView();
     }
 }

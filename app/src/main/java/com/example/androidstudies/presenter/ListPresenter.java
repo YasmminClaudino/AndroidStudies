@@ -4,6 +4,7 @@ import com.example.androidstudies.view.IListRepository;
 import com.example.androidstudies.view.ListAdapter;
 import com.example.androidstudies.model.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListPresenter implements IListRepository.Presenter {
@@ -21,37 +22,38 @@ public class ListPresenter implements IListRepository.Presenter {
 
     }
 
+    @Override
+    public void onStart(IListRepository.View view) {
+        attachView(view);
+        onLoad();
+    }
+
+
+    @Override
+    public void onStop() {
+        unattachedView();
+    }
+
     public int getListRepositoriesSize(){
         return mListRepositories.size();
     }
 
-    @Override
-    public void onLoad(List<Repository> listRepositories) {
-        mListRepositories = listRepositories;
+    private void onLoad() {
+        mListRepositories = createRepository();
     }
 
-    @Override
-    public void attachView(IListRepository.View view) {
+    private void attachView(IListRepository.View view) {
         mView = view;
 
     }
 
-    @Override
-    public void unattachedView() {
+    private void unattachedView() {
         mView = null;
     }
 
-    @Override
-    public void onStart() {
 
-    }
-
-    @Override
-    public void onStop() {
-
-    }
-
-    public List<Repository> createRepository(List<Repository> list){
+    private List<Repository> createRepository(){
+        List<Repository> list = new ArrayList<>();
         Repository repository = new Repository();
         repository.setRepoName("AndroidStudies");
         repository.setDescription("This is a project to improve Android knowledge" +
